@@ -1,26 +1,31 @@
-from google import genai
+import google.generativeai as genai
 from secret import GEMINI_API_KEY
 
 def get_top_fish(longitude, latitude):
-    # Replace with your Google GenAI API key
-    genai.api_key = GEMINI_API_KEY
+    # Configure the GenAI client
+    genai.configure(api_key=GEMINI_API_KEY)
+
+    # Select the model
+    model = genai.GenerativeModel('gemini-1.5-flash-latest') # Try another common model
 
     # Construct the prompt
     prompt = (
-        f"Given the longitude {longitude} and latitude {latitude}, "
-        "list the top 5 fish species commonly found in this area."
+        f"List only the names of the top 5 fish species commonly found at longitude {longitude} and latitude {latitude}. "
+        "Provide the list separated by newlines. Do not include any introductory text, explanations, or numbering."
     )
 
     try:
         # Call the Google GenAI API
-        response = genai.generate_text(
-            prompt=prompt,
-            temperature=0.7,
-            max_output_tokens=100
-        )
+        response = model.generate_content(prompt)
+
         # Extract the response text
-        fish_list = response.result.split("\n")
-        return [fish.strip() for fish in fish_list if fish.strip()]
+        # Ensure response.text exists and is not empty before splitting
+        if response.text:
+            fish_list = response.text.split("\n")
+            return [fish.strip() for fish in fish_list if fish.strip()]
+        else:
+            print("Received empty response from Google GenAI API.")
+            return []
     except Exception as e:
         print(f"Error fetching data from Google GenAI API: {e}")
         return []
