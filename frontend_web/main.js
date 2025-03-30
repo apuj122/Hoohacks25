@@ -238,10 +238,19 @@ async function handleAstronomy() {
         if (response.ok && result.success) {
             if (onTripStatusMessage) onTripStatusMessage.textContent = 'Astronomy info retrieved!';
             if (onTripStatusMessage) onTripStatusMessage.className = 'success';
-            if (resultsDiv) {
-                // Display raw output
-                resultsDiv.textContent = "Astronomy Info:\n" + (result.data.raw_output || "No output received.");
+            if (resultsDiv && result.data && result.data.image_url) {
+                // Display the image URL as a clickable link
+                resultsDiv.innerHTML = `
+                    <p>Astronomy Info:</p>
+                    <p>Star Chart Image URL (click to view):</p>
+                    <a href="${result.data.image_url}" target="_blank">${result.data.image_url}</a>
+                `;
+                // Optionally, try to embed the image directly:
+                // resultsDiv.innerHTML += `<br><img src="${result.data.image_url}" alt="Star Chart" style="max-width: 100%; height: auto;">`;
                 resultsDiv.style.display = 'block';
+            } else if (resultsDiv) {
+                 resultsDiv.textContent = "Astronomy info retrieved, but no image URL found in response.";
+                 resultsDiv.style.display = 'block';
             }
         } else {
             throw new Error(result.error || 'Failed to get astronomy info.');

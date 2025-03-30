@@ -4,9 +4,17 @@ import json
 from flask import Flask, request, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 import sys
+from dotenv import load_dotenv
+
+# Load environment variables from .env file in the project root
+load_dotenv()
+
+# Import refactored astronomy functions
+from src.APIs.astronomy_api import get_location_from_ip, get_star_chart_image_url
 
 # --- Configuration ---
 # Assuming your scripts are in src/APIs relative to this backend file
+SCRIPT_DIR = os.path.join(os.path.dirname(__file__), 'src', 'APIs')
 SCRIPT_DIR = os.path.join(os.path.dirname(__file__), 'src', 'APIs')
 # Ensure the script directory is in the Python path if scripts import local modules like 'secret'
 sys.path.insert(0, SCRIPT_DIR)
@@ -253,20 +261,57 @@ def get_fish_info():
         return jsonify({"success": False, "error": "fishy.py ran successfully but produced no output."}), 500
 
 
-@app.route('/api/astronomy', methods=['POST']) # Using POST for consistency, though no body needed
+@app.route('/api/astronomy', methods=['POST'])
 def get_astronomy_info():
-    """Endpoint to get astronomy information."""
-    # app.py doesn't seem to take arguments based on previous context
-    args = []
-    result = run_script('app.py', args) # Assuming app.py is the astronomy script
+    """Endpoint to get astronomy information (star chart image URL)."""
+    # Get credentials loaded from .env file
+    app_id = os.getenv('APP_ID')
+    app_secret = os.getenv('APP_SECRET')
+    ipinfo_key = os.getenv('API_KEY') # Key for ipinfo.io
 
-    if result["success"] and result["output"]:
-         # Return the raw output from the script
-         return jsonify({"success": True, "data": {"raw_output": result["output"]}})
-    elif not result["success"]:
-        return jsonify({"success": False, "error": result["error"]}), 500
+    if not app_id or not app_secret:
+         return jsonify({"success": False, "error": "Astronomy API credentials (APP_ID, APP_SECRET) not configured on server."}), 500
+    # Note: ipinfo_key is optional in astronomy_api.py, but we need location.
+    # If key is missing, we'll try to use default coords below.
+
+    # Attempt to get client's IP address
+    ip_address = request.headers.get('X-Forwarded-For', request.remote_addr)
+    # Handle potential multiple IPs in X-Forwarded-For
+    if ip_address and ',' in ip_address:
+        ip_address = ip_address.split(',')[0].strip()
+
+    location_data = None
+    # Handle localhost IPs for testing (ipinfo won't work) or missing ipinfo key
+    if ip_address in ('127.0.0.1', '::1') or not ipinfo_key:
+        if not ipinfo_key:
+             print("Warning: IPInfo API Key (API_KEY) not configured. Using default coordinates for astronomy.", file=sys.stderr)
+        else:
+             print("Detected localhost IP, using default coordinates for astronomy.", file=sys.stderr)
+        # Use default coordinates (e.g., Washington D.C.)
+        location_data = {"latitude": 38.8951, "longitude": -77.0364}
     else:
-        return jsonify({"success": False, "error": "Astronomy script (app.py) ran successfully but produced no output."}), 500
+        location_data = get_location_from_ip(ip_address, ipinfo_key)
+
+    if not location_data or "latitude" not in location_data or "longitude" not in location_data:
+        error_msg = location_data.get("error", "Could not determine location from IP address.") if location_data else "Could not determine location from IP address."
+        return jsonify({"success": False, "error": error_msg}), 500
+
+    # Call the refactored function to get the star chart URL
+    result = get_star_chart_image_url(
+        latitude=location_data["latitude"],
+        longitude=location_data["longitude"],
+        app_id=app_id,
+        app_secret=app_secret
+    )
+
+    if result.get("success"):
+        # Instead of raw output, return the image URL
+        return jsonify({"success": True, "data": {"image_url": result["image_url"]}})
+    else:
+        error_msg = result.get("error", "Failed to generate star chart.")
+        details = result.get("details")
+        print(f"Astronomy API Error: {error_msg} Details: {details}", file=sys.stderr)
+        return jsonify({"success": False, "error": error_msg, "details": details}), 500
 
 
 # --- Main Execution ---
