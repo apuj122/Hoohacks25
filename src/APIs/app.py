@@ -89,7 +89,7 @@ def get_client_location():
                             "declination": -15.23
                         }
                     },
-                    "zoom": 3
+                    "zoom": 10
                 }
             }
         }
