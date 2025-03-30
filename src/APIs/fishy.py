@@ -1,9 +1,9 @@
-from google.generativeai import chat
-from APIs.secret import GEMINI_API_KEY
+from google import genai
+from secret import GEMINI_API_KEY
 
 def get_top_fish(longitude, latitude):
     # Replace with your Google GenAI API key
-    chat.api_key = GEMINI_API_KEY
+    genai.api_key = GEMINI_API_KEY
 
     # Construct the prompt
     prompt = (
@@ -13,7 +13,7 @@ def get_top_fish(longitude, latitude):
 
     try:
         # Call the Google GenAI API
-        response = chat.generate_text(
+        response = genai.generate_text(
             prompt=prompt,
             temperature=0.7,
             max_output_tokens=100
