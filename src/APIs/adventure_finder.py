@@ -132,11 +132,42 @@ if adventure_locations:
     print(f"Found {len(adventure_locations)} adventure spots. Generating map...")
     try:
         # Create a map centered at the input location
+        # Start with the default OpenStreetMap tiles
         zoom_level = 11 if radius_miles <= 20 else 10
-        m = folium.Map(location=[latitude, longitude], zoom_start=zoom_level)
+        m = folium.Map(location=[latitude, longitude], zoom_start=zoom_level, tiles="OpenStreetMap")
 
-        # Create feature groups for each category for toggling
-        feature_groups = defaultdict(lambda: folium.FeatureGroup(name="Unknown Category"))
+        # --- Add Additional Base Map Tile Layers ---
+        # Stamen Terrain
+        folium.TileLayer(
+            tiles='Stamen Terrain',
+            attr='Map tiles by Stamen Design, CC BY 3.0 — Map data © OpenStreetMap contributors',
+            name='Terrain'
+        ).add_to(m)
+
+        # CartoDB Positron (Light)
+        folium.TileLayer(
+            tiles='CartoDB positron',
+            attr='Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.',
+            name='Light Map'
+        ).add_to(m)
+
+        # CartoDB Dark Matter (Dark)
+        folium.TileLayer(
+            tiles='CartoDB dark_matter',
+            attr='Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.',
+            name='Dark Map'
+        ).add_to(m)
+
+        # Esri World Imagery (Satellite) - Often works without API key for basic use
+        folium.TileLayer(
+            tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            attr='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+            name='Satellite'
+        ).add_to(m)
+
+
+        # --- Create Feature Groups for Location Categories ---
+        feature_groups = defaultdict(lambda: folium.FeatureGroup(name="Unknown Category", show=False)) # Start with category layers potentially hidden
         for cat_name in CATEGORIES.keys():
              # Use the category name directly for the layer control label
             feature_groups[cat_name] = folium.FeatureGroup(name=cat_name)
