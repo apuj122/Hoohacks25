@@ -1,9 +1,10 @@
 import google.generativeai as genai
 import base64
 import json
+from secret import GEMINI_API_KEY
 
 # Set up the API key
-genai.configure(api_key="YOUR_GEMINI_API_KEY")
+genai.configure(api_key=GEMINI_API_KEY)
 
 # Convert the image to Base64
 def encode_image(image_path):
