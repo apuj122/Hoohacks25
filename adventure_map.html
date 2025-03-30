@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60 = L.map(
+                "map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60",
+                {
+                    center: [34.0522, -118.2437],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2b27c9aa66632a1af12bdbe1450a833b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_2b27c9aa66632a1af12bdbe1450a833b.addTo(map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60);
+        
+    
+            var marker_e8960cf7279e8fa211ecf62211ad2d60 = L.marker(
+                [34.0711, -118.2344],
+                {
+}
+            ).addTo(map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60);
+        
+    
+            var icon_154750a4827597511d23284612d3972e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_01084092a0ae221ecd9ed276f5553727 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_32a6d99a481c99ad7f5c3905ce65b170 = $(`<div id="html_32a6d99a481c99ad7f5c3905ce65b170" style="width: 100.0%; height: 100.0%;"><b>Hastain Trail</b><br>Type: Hiking Trail<br>Lat: 34.0711, Lon: -118.2344</div>`)[0];
+                popup_01084092a0ae221ecd9ed276f5553727.setContent(html_32a6d99a481c99ad7f5c3905ce65b170);
+            
+        
+
+        marker_e8960cf7279e8fa211ecf62211ad2d60.bindPopup(popup_01084092a0ae221ecd9ed276f5553727)
+        ;
+
+        
+    
+    
+            marker_e8960cf7279e8fa211ecf62211ad2d60.bindTooltip(
+                `<div>
+                     Hastain Trail
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e8960cf7279e8fa211ecf62211ad2d60.setIcon(icon_154750a4827597511d23284612d3972e);
+            
+    
+            var marker_302f144a6f0cdeb89a41e79619543b7f = L.marker(
+                [34.0607, -118.2557],
+                {
+}
+            ).addTo(map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60);
+        
+    
+            var icon_6c7097b05550ec42578cc3cbc95154c1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c1046ac6bd50defc7f62f3abff4e7e17 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fac3078ce8e7d4ca6c3eb228de9c8e0e = $(`<div id="html_fac3078ce8e7d4ca6c3eb228de9c8e0e" style="width: 100.0%; height: 100.0%;"><b>Fern Dell Trail</b><br>Type: Hiking Trail<br>Lat: 34.0607, Lon: -118.2557</div>`)[0];
+                popup_c1046ac6bd50defc7f62f3abff4e7e17.setContent(html_fac3078ce8e7d4ca6c3eb228de9c8e0e);
+            
+        
+
+        marker_302f144a6f0cdeb89a41e79619543b7f.bindPopup(popup_c1046ac6bd50defc7f62f3abff4e7e17)
+        ;
+
+        
+    
+    
+            marker_302f144a6f0cdeb89a41e79619543b7f.bindTooltip(
+                `<div>
+                     Fern Dell Trail
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_302f144a6f0cdeb89a41e79619543b7f.setIcon(icon_6c7097b05550ec42578cc3cbc95154c1);
+            
+    
+            var marker_44f529138916934c6fb03c7225191c92 = L.marker(
+                [34.1269, -118.1616],
+                {
+}
+            ).addTo(map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60);
+        
+    
+            var icon_862d9fef2405af04a58a6c3fdfdafbf0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7146add4afe79791360e91eb5e25683e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0888dd749203c81be381a39c0c49e360 = $(`<div id="html_0888dd749203c81be381a39c0c49e360" style="width: 100.0%; height: 100.0%;"><b>Eaton Canyon Trail</b><br>Type: Hiking Trail<br>Lat: 34.1269, Lon: -118.1616</div>`)[0];
+                popup_7146add4afe79791360e91eb5e25683e.setContent(html_0888dd749203c81be381a39c0c49e360);
+            
+        
+
+        marker_44f529138916934c6fb03c7225191c92.bindPopup(popup_7146add4afe79791360e91eb5e25683e)
+        ;
+
+        
+    
+    
+            marker_44f529138916934c6fb03c7225191c92.bindTooltip(
+                `<div>
+                     Eaton Canyon Trail
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_44f529138916934c6fb03c7225191c92.setIcon(icon_862d9fef2405af04a58a6c3fdfdafbf0);
+            
+    
+            var marker_cdd68fa02fc1ae1f326b721acfdff0ba = L.marker(
+                [34.1506, -118.1435],
+                {
+}
+            ).addTo(map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60);
+        
+    
+            var icon_30e7c041e23de5f814577808f87df2c1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b55f1c797a34b023815a0fcf23bca672 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ded2d9989b4db6dc1c8b673a4113e38d = $(`<div id="html_ded2d9989b4db6dc1c8b673a4113e38d" style="width: 100.0%; height: 100.0%;"><b>Pasadena City College Lake</b><br>Type: Fishing Spot<br>Lat: 34.1506, Lon: -118.1435</div>`)[0];
+                popup_b55f1c797a34b023815a0fcf23bca672.setContent(html_ded2d9989b4db6dc1c8b673a4113e38d);
+            
+        
+
+        marker_cdd68fa02fc1ae1f326b721acfdff0ba.bindPopup(popup_b55f1c797a34b023815a0fcf23bca672)
+        ;
+
+        
+    
+    
+            marker_cdd68fa02fc1ae1f326b721acfdff0ba.bindTooltip(
+                `<div>
+                     Pasadena City College Lake
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cdd68fa02fc1ae1f326b721acfdff0ba.setIcon(icon_30e7c041e23de5f814577808f87df2c1);
+            
+    
+            var marker_160f94e087b83557b163ee3e1f023b33 = L.marker(
+                [34.0427, -118.2022],
+                {
+}
+            ).addTo(map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60);
+        
+    
+            var icon_1d4aad719b14ea297868e6706ef7d674 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c1e7854082609d678216d188628243dc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ac46ef49e2f52fa9cd135925971e5498 = $(`<div id="html_ac46ef49e2f52fa9cd135925971e5498" style="width: 100.0%; height: 100.0%;"><b>Crystal Lake</b><br>Type: Fishing Spot<br>Lat: 34.0427, Lon: -118.2022</div>`)[0];
+                popup_c1e7854082609d678216d188628243dc.setContent(html_ac46ef49e2f52fa9cd135925971e5498);
+            
+        
+
+        marker_160f94e087b83557b163ee3e1f023b33.bindPopup(popup_c1e7854082609d678216d188628243dc)
+        ;
+
+        
+    
+    
+            marker_160f94e087b83557b163ee3e1f023b33.bindTooltip(
+                `<div>
+                     Crystal Lake
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_160f94e087b83557b163ee3e1f023b33.setIcon(icon_1d4aad719b14ea297868e6706ef7d674);
+            
+    
+            var marker_a0fbbb07c1d5e20a6d9f9f7db330e42e = L.marker(
+                [34.2333, -118.2667],
+                {
+}
+            ).addTo(map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60);
+        
+    
+            var icon_baab108eea0105ea567059b134717440 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5a0ffeb60c8ecd8b35615ffadc253320 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_544b0fc7efc53f48a6a06c31ccfcaf82 = $(`<div id="html_544b0fc7efc53f48a6a06c31ccfcaf82" style="width: 100.0%; height: 100.0%;"><b>Big Tujunga Canyon Campground</b><br>Type: Campsite<br>Lat: 34.2333, Lon: -118.2667</div>`)[0];
+                popup_5a0ffeb60c8ecd8b35615ffadc253320.setContent(html_544b0fc7efc53f48a6a06c31ccfcaf82);
+            
+        
+
+        marker_a0fbbb07c1d5e20a6d9f9f7db330e42e.bindPopup(popup_5a0ffeb60c8ecd8b35615ffadc253320)
+        ;
+
+        
+    
+    
+            marker_a0fbbb07c1d5e20a6d9f9f7db330e42e.bindTooltip(
+                `<div>
+                     Big Tujunga Canyon Campground
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a0fbbb07c1d5e20a6d9f9f7db330e42e.setIcon(icon_baab108eea0105ea567059b134717440);
+            
+    
+            var marker_57d186550a8ff139225931052fabbc53 = L.marker(
+                [34.088, -118.217],
+                {
+}
+            ).addTo(map_9b6c86d1b7ad57d8e7fcf6ba1f7edb60);
+        
+    
+            var icon_bc8dce60df67b24861c84f97db94fb2d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bf05faef7158c20026a1443dbbcc9d32 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_44a5ee679634ed90eada561fc270d87f = $(`<div id="html_44a5ee679634ed90eada561fc270d87f" style="width: 100.0%; height: 100.0%;"><b>Debs Park Campground</b><br>Type: Campsite<br>Lat: 34.0880, Lon: -118.2170</div>`)[0];
+                popup_bf05faef7158c20026a1443dbbcc9d32.setContent(html_44a5ee679634ed90eada561fc270d87f);
+            
+        
+
+        marker_57d186550a8ff139225931052fabbc53.bindPopup(popup_bf05faef7158c20026a1443dbbcc9d32)
+        ;
+
+        
+    
+    
+            marker_57d186550a8ff139225931052fabbc53.bindTooltip(
+                `<div>
+                     Debs Park Campground
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_57d186550a8ff139225931052fabbc53.setIcon(icon_bc8dce60df67b24861c84f97db94fb2d);
+            
+</script>
+</html>
