@@ -105,10 +105,20 @@ async function handleIdentification(idType) {
         if (response.ok && result.success) {
             if (onTripStatusMessage) onTripStatusMessage.textContent = `${idType.charAt(0).toUpperCase() + idType.slice(1)} identified successfully!`;
             if (onTripStatusMessage) onTripStatusMessage.className = 'success';
-            if (resultsDiv) {
-                // Display formatted JSON results
-                resultsDiv.textContent = JSON.stringify(result.data, null, 2); // Pretty print JSON
+            if (resultsDiv && result.data) {
+                // Format the identification results for display
+                let formattedText = `Identification Results:\n\n`;
+                formattedText += `Common Name: ${result.data.common_name || 'N/A'}\n`;
+                formattedText += `Scientific Name: ${result.data.scientific_name || 'N/A'}\n`;
+                formattedText += `Places Found: ${result.data.places_found || 'N/A'}\n`;
+                formattedText += `Fun Fact: ${result.data.fun_fact || 'N/A'}\n`;
+
+                resultsDiv.textContent = formattedText;
                 resultsDiv.style.display = 'block';
+            } else if (resultsDiv) {
+                 // Handle cases where data might be missing even if success is true
+                 resultsDiv.textContent = "Identification successful, but no data received.";
+                 resultsDiv.style.display = 'block';
             }
         } else {
             throw new Error(result.error || `Failed to identify ${idType}.`);
