@@ -1,0 +1,3 @@
+Flask>=2.0
+google-generativeai>=0.4 # Use a recent version known to work
+folium>=0.14 # Use a recent version
