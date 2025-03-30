@@ -19,7 +19,7 @@ image_path = "your_image.jpg"
 
 # Send request with image and text
 response = model.generate_content([
-    {"type": "text", "text": "You are a professional on trees/flowers/flora. Identify the animal in this image and provide the following details: Common Name, Scientific Name, Places these trees/flowers/flora can be found (comma-separated list), and one fun fact about these trees/flowers/flora."},
+    {"type": "text", "text": "You are a professional on trees/flowers/flora. Identify the plant in this image and provide the following details: Common Name, Scientific Name, Places these trees/flowers/flora can be found (comma-separated list), and one fun fact about these trees/flowers/flora."},
     {"type": "image", "data": encode_image(image_path)}
 ])
 
