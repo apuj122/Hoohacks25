@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Trip - Adventure Companion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Plan Your Adventure</h1>
+        <p>Enter your location and desired search radius to find nearby adventure spots.</p>
+
+        <form id="plan-trip-form">
+            <div class="form-group">
+                <label for="latitude">Latitude:</label>
+                <input type="number" id="latitude" name="latitude" step="any" required placeholder="e.g., 38.8951">
+            </div>
+            <div class="form-group">
+                <label for="longitude">Longitude:</label>
+                <input type="number" id="longitude" name="longitude" step="any" required placeholder="e.g., -77.0364">
+            </div>
+            <div class="form-group">
+                <label for="radius">Search Radius (miles):</label>
+                <input type="number" id="radius" name="radius" min="1" value="15" required>
+            </div>
+            <button type="submit">Find Adventures!</button>
+        </form>
+
+        <div id="status-message"></div>
+
+        <div id="map-container" style="display: none;"> <!-- Initially hidden -->
+            <h2>Adventure Map</h2>
+            <iframe id="map-iframe" src="about:blank"></iframe>
+        </div>
+
+         <div class="button-group">
+             <a href="index.html" class="button secondary">Back to Home</a>
+         </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

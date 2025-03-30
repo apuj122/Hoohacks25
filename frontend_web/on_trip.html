@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On Your Trip - Adventure Companion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>On Your Trip Fun!</h1>
+        <p>Identify things around you or get local info.</p>
+
+        <div class="tool-section">
+            <h2>Identification Tools</h2>
+            <div class="form-group">
+                <label for="image-upload">Upload Image:</label>
+                <input type="file" id="image-upload" accept="image/jpeg, image/png, image/webp">
+            </div>
+            <div class="button-group">
+                <button id="identify-animal-btn" class="button secondary">Identify Animal</button>
+                <button id="identify-bird-btn" class="button secondary">Identify Bird</button>
+                <button id="identify-flora-btn" class="button secondary">Identify Plant/Flower</button>
+            </div>
+        </div>
+
+        <div class="tool-section">
+            <h2>Local Info</h2>
+             <div class="form-group">
+                <label for="info-latitude">Latitude (Optional):</label>
+                <input type="number" id="info-latitude" name="info-latitude" step="any" placeholder="Current location if blank">
+            </div>
+            <div class="form-group">
+                <label for="info-longitude">Longitude (Optional):</label>
+                <input type="number" id="info-longitude" name="info-longitude" step="any" placeholder="Current location if blank">
+            </div>
+            <div class="button-group">
+                <button id="get-fish-btn" class="button">Get Local Fish Info</button>
+                <button id="get-astro-btn" class="button">Get Astronomy Info</button>
+            </div>
+        </div>
+
+        <div id="status-message"></div>
+        <div id="results" style="display: none;"></div> <!-- To display JSON results -->
+
+        <div class="button-group">
+            <a href="index.html" class="button secondary">Back to Home</a>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
